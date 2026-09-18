@@ -8,19 +8,16 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>
-    {% if 'Séries' in controller_name %}
+{% if 'Séries' in controller_name %}
         <h1>{{ controller_name |upper }}! ✅</h1>
     {% else %}
         <p>Ce site n'est pas pour les amateurs de séries</p>
     {% endif %}
     </h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/html/fouDeSeries/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/var/www/html/fouDeSeries/templates/home/index.html.twig</code></li>
-    </ul>
+<div class="example-wrapper">
+    <h1>
+        <img src="{{ asset('images/fortnite.png') }}" alt="Symfony!" width="600" height="400"/>
+        <h6>Ne me spoil pas stp</h6>
 </div>
 {% endblock %}
