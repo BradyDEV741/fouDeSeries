@@ -9,7 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>
+    {% if 'Séries' in controller_name %}
+        <h1>{{ controller_name |upper }}! ✅</h1>
+    {% else %}
+        <p>Ce site n'est pas pour les amateurs de séries</p>
+    {% endif %}
+    </h1>
 
     This friendly message is coming from:
     <ul>

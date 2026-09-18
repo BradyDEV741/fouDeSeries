@@ -12,7 +12,7 @@ final class HomeController extends AbstractController
     public function index(): Response
     {
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'Bienvenue sur Fou de Séries',
+            'controller_name' => 'Bienvenue sur fou de Séries',
         ]);
     }
 }
