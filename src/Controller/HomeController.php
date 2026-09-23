@@ -15,5 +15,11 @@ final class HomeController extends AbstractController
             'controller_name' => 'Bienvenue sur fou de Séries',
         ]);
     }
+    #[Route('/news', name: 'app_news')]
+    public function new(): Response
+    {
+        return $this->render('news/news.html.twig', [
+        ]);
+    }
 }
 
