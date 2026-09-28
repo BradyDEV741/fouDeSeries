@@ -10,21 +10,21 @@ use DateTime;
 
 class SerieService
 {
-    public static function getSerieDao()
+    public function getSeries()
     {
         $lesSeriesDao = SerieDao::getSeriesDao();
         $lesSeries = array();
-        foreach ($lesSeries as $uneSerie) {
+        foreach ($lesSeriesDao as $uneSerie) {
             $uneSerie = new Serie(
-                $uneSerie->Id,
-                $uneSerie->Titre,
-                new DateTime($uneSerie->RremiereDiffusion),
-                $uneSerie->NbEpisodes,
-                $uneSerie->Resume,
-                $uneSerie->Image,
+                $uneSerie->id,
+                $uneSerie->titre,
+                new DateTime($uneSerie->premiereDiffusion),
+                $uneSerie->nbEpisodes,
+                $uneSerie->resume,
+                $uneSerie->image
             );
             $lesSeries[] = $uneSerie;
-            return $lesSeriesDao;
         }
+        return $lesSeries;
     }
 }

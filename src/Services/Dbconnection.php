@@ -5,7 +5,7 @@ use \PDOException;
 
 class Dbconnection{   		
       	private static string $serveur='mysql:host=localhost';
-      	private static string $bdd='fouDeSeries=';   		
+      	private static string $bdd='dbname=fouDeSeries';   		
       	private static string $user='brady' ;    		
       	private static string $mdp='P@ssw0rd' ;	
 		private static ?PDO $monPdo= null;
