@@ -27,4 +27,18 @@ class SerieService
         }
         return $lesSeries;
     }
+    public function getSerie($id)
+    {
+
+        $uneSerie = SerieDao::getInfosSerie($id);
+        $uneInfosSerie = new Serie(
+                $uneSerie->id,
+                $uneSerie->titre,
+                new DateTime($uneSerie->premiereDiffusion),
+                $uneSerie->nbEpisodes,
+                $uneSerie->resume,
+                $uneSerie->image
+            );
+        return $uneInfosSerie;
+    }
 }

@@ -13,7 +13,6 @@ class Dbconnection{
 	
 private function __construct(){
 	}
-
 	public  static function getPdo(){
 		if(is_null (Dbconnection::$monPdo)) {
 			try{

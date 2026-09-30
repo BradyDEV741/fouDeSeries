@@ -18,4 +18,23 @@ final class SerieController extends AbstractController
             'lesSeries' => $lesSeries
         ]);
     }
+
+    #[Route('/serie/{id}', name: 'app_infos_serie')]
+    public function infos_series(int $id, SerieService $serieService): Response 
+    {
+        $uneSerie = $serieService->getSerie($id);
+        $tabId = [];
+        while (count($tabId)>3){
+            $tabId[]=rand(1,12);
+            $tabId=array_unique($tabId);
+        }
+        $serieCollection = [];
+        foreach($tabId as $unId){
+            $serieCollection = $serieService -> getSerie($unId);
+        }
+        return $this->render('serie/infosSerie.html.twig', [
+            'uneSerie' => $uneSerie,
+            'serieCollection' => $serieCollection
+        ]);
+    }
 }
