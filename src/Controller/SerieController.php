@@ -24,13 +24,14 @@ final class SerieController extends AbstractController
     {
         $uneSerie = $serieService->getSerie($id);
         $tabId = [];
-        while (count($tabId)>3){
-            $tabId[]=rand(1,12);
+        while (count($tabId)<3){
+            $randId = rand(1,12);
+            if ($randId != $id)$tabId[]=$randId;
             $tabId=array_unique($tabId);
         }
         $serieCollection = [];
         foreach($tabId as $unId){
-            $serieCollection = $serieService -> getSerie($unId);
+            $serieCollection[] = $serieService -> getSerie($unId);
         }
         return $this->render('serie/infosSerie.html.twig', [
             'uneSerie' => $uneSerie,
