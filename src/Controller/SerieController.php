@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Serie;
+use App\Repository\SerieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,17 +19,31 @@ final class SerieController extends AbstractController
         ]);
     }
 
-#[Route('/testEntity', name: 'app_entity')]
+    #[Route('/series', name: 'serie_list')]
+    public function list(SerieRepository $repo): Response
+    {
+        $series = $repo->findBy(
+            [],
+            ['titre' => 'ASC']
+        );
+        return $this->render('serie/list.html.twig', [
+            'series' => $series
+        ]);
+    }
+
+
+
+    #[Route('/testEntity', name: 'app_entity')]
     public function testEntity(EntityManagerInterface $em): Response
     {
         $uneSerie = new Serie();
         $uneSerie->setTitre("Outer Banks")
-         ->setResume("Un groupe d'adolescents trouve une carte au trésor...")
-         ->setPremiereDiffusion(new \DateTime('2020-04-15'))
-         ->setNbEpisodes(30)
-         ->setImage("outer-banks.jpg");
-        $em ->persist($uneSerie);
-        $em ->flush();
-        return new Response($uneSerie -> getTitre());
+            ->setResume("Un groupe d'adolescents trouve une carte au trésor...")
+            ->setPremiereDiffusion(new \DateTime('2020-04-15'))
+            ->setNbEpisodes(30)
+            ->setImage("outer-banks.jpg");
+        $em->persist($uneSerie);
+        $em->flush();
+        return new Response($uneSerie->getTitre());
     }
 }
