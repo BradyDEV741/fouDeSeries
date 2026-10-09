@@ -31,6 +31,30 @@ final class SerieController extends AbstractController
         ]);
     }
 
+     #[Route('/news', name: 'serie_tri')]
+
+    public function tri(SerieRepository $repo): Response
+    {
+        $seriesTri = $repo->findBy(
+            [],
+            ['premiereDiffusion' => 'ASC'],
+            4
+        );
+        return $this->render('news/news.html.twig', [
+            'seriesTri' => $seriesTri
+        ]);
+    }
+
+
+
+     #[Route('/serie/{id}', name: 'app_serie')]
+    public function serie(int $id, SerieRepository $repo): Response
+    {
+        $serie = $repo->find($id);
+        return $this->render('serie/serie.html.twig', [
+            'serie' => $serie
+        ]);
+    }
 
 
     #[Route('/testEntity', name: 'app_entity')]

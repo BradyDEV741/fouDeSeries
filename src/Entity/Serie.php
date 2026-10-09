@@ -30,6 +30,9 @@ class Serie
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'lesSeries')]
+    private ?Pays $lePays = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +94,18 @@ class Serie
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getLePays(): ?Pays
+    {
+        return $this->lePays;
+    }
+
+    public function setLePays(?Pays $lePays): static
+    {
+        $this->lePays = $lePays;
 
         return $this;
     }

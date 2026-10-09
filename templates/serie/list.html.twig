@@ -13,11 +13,6 @@
             overflow: hidden;
         }
 
-        .serie-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
-        }
-
         .serie-img-container {
             height: 320px;
             overflow: hidden;
@@ -29,6 +24,7 @@
             height: 100%;
             object-fit: cover;
         }
+        
     </style>
 
     <div class="container py-5">
@@ -48,7 +44,7 @@
                             <img src="{{ listSerie.image }}" class="serie-img" alt="{{ listSerie.titre }}">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-between text-center">
-                            <button><a class="card-title fw-bold text-dark mb-0" href="{{ path('serie_list', {id: listSerie.id}) }}">{{ listSerie.titre }}</a></button>
+                            <button><a class="card-title fw-bold text-dark mb-0" href="{{ path('app_serie', {id: listSerie.id}) }}">{{ listSerie.titre }}</a></button>
                         </div>
                     </div>
                 </div>
