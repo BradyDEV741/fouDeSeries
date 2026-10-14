@@ -57,17 +57,4 @@ final class SerieController extends AbstractController
     }
 
 
-    #[Route('/testEntity', name: 'app_entity')]
-    public function testEntity(EntityManagerInterface $em): Response
-    {
-        $uneSerie = new Serie();
-        $uneSerie->setTitre("Outer Banks")
-            ->setResume("Un groupe d'adolescents trouve une carte au trésor...")
-            ->setPremiereDiffusion(new \DateTime('2020-04-15'))
-            ->setNbEpisodes(30)
-            ->setImage("outer-banks.jpg");
-        $em->persist($uneSerie);
-        $em->flush();
-        return new Response($uneSerie->getTitre());
-    }
 }

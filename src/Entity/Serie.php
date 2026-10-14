@@ -30,8 +30,12 @@ class Serie
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\ManyToOne(inversedBy: 'lesSeries')]
+
+    #[ORM\ManyToOne(inversedBy : 'lesSeries')]
+    #[ORM\JoinColumn(name: "idPays", referencedColumnName :"id")]
     private ?Pays $lePays = null;
+
+    
 
     public function getId(): ?int
     {

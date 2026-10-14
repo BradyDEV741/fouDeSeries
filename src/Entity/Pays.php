@@ -34,12 +34,12 @@ class Pays
         return $this->id;
     }
 
-    public function getPays(): ?string
+    public function getNom(): ?string
     {
         return $this->Nom;
     }
 
-    public function setPays(?string $Nom): static
+    public function setNom(?string $Nom): static
     {
         $this->Nom = $Nom;
 
