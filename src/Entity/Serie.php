@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SerieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,7 +37,18 @@ class Serie
     #[ORM\JoinColumn(name: "idPays", referencedColumnName :"id")]
     private ?Pays $lePays = null;
 
-    
+    /**
+     * @var Collection<int, Genre>
+     */
+    #[ORM\ManyToMany(targetEntity: Genre::class, inversedBy : 'lesSeries')]
+    #[ORM\JoinColumn(name: "idSerie", referencedColumnName :"id")]
+    #[ORM\InverseJoinColumn(name: 'idGenre', referencedColumnName: 'id')]
+    private Collection $lesGenres;
+
+    public function __construct()
+    {
+        $this->lesGenres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,6 +123,30 @@ class Serie
     public function setLePays(?Pays $lePays): static
     {
         $this->lePays = $lePays;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Genre>
+     */
+    public function getLesGenres(): Collection
+    {
+        return $this->lesGenres;
+    }
+
+    public function addLesGenres(Genre $lesGenre): static
+    {
+        if (!$this->lesGenres->contains($lesGenre)) {
+            $this->lesGenres->add($lesGenre);
+        }
+
+        return $this;
+    }
+
+    public function removeLesGenres(Genre $lesGenre): static
+    {
+        $this->lesGenres->removeElement($lesGenre);
 
         return $this;
     }
