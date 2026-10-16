@@ -75,6 +75,13 @@
                 <p class="fw-bold mb-0">
                     Pays : <span class="fw-normal">{{ serie.lePays.Nom }}</span>
                 </p>
+                <p class="fw-bold mb-0">
+                    Genres :
+                    {% for genreSerie in serie.lesGenres %}
+                        <span class="fw-normal">{{ genreSerie.libelle }} </span>
+                    {% endfor %}
+                </p>
+
             </div>
         </div>
 {% endblock %}

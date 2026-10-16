@@ -58,7 +58,7 @@ class Genre
     {
         if (!$this->lesSeries->contains($lesSeries)) {
             $this->lesSeries->add($lesSeries);
-            $lesSeries->addLesGenre($this);
+            $lesSeries->addLesGenres($this);
         }
 
         return $this;
@@ -67,7 +67,7 @@ class Genre
     public function removeLesSeries(Serie $lesSeries): static
     {
         if ($this->lesSeries->removeElement($lesSeries)) {
-            $lesSeries->removeLesGenre($this);
+            $lesSeries->removeLesGenres($this);
         }
 
         return $this;

@@ -55,6 +55,4 @@ final class SerieController extends AbstractController
             'serie' => $serie
         ]);
     }
-
-
 }
